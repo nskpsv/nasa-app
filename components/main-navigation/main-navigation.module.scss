@@ -1,0 +1,12 @@
+@import '../../styles/text-presets.scss';
+
+.main_nav__link {
+    @extend %text-16;
+    text-decoration: underline;
+    margin-left: 24px;
+}
+
+.active {
+    text-decoration: none;
+    font-weight: 700;
+}

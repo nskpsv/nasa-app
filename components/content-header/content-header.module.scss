@@ -1,0 +1,12 @@
+@import '../../styles/text-presets.scss';
+@import '../../styles/colors.scss';
+
+.content_header {
+
+}
+
+.content_header__title {
+    @extend %text-24;
+    height: 36px;
+    border-bottom: 1px solid $lines-gray;
+}

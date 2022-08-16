@@ -1,14 +1,12 @@
 import React from "react";
-import ContentFilters from '../components/content-filters';
-import classes from '../../styles/modules/content-header.module.scss';
+import ContentFilters from '../content-filters/content-filters';
+import classes from './content-header.module.scss';
 
 export default () => {
     return (
-        <>
+        <header className={classes.content_header}>
             <h1 className={classes.content_header__title}>Ближайшие подлёты</h1>
-            <section>
                 <ContentFilters />
-            </section>
-        </>
+        </header>
     )
 }

@@ -1,0 +1,26 @@
+%text-28 {
+    font-family: 'Helvetica';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 32px;
+}
+
+%text-24 {
+    @extend %text-28;
+    font-size: 24px;
+    line-height: 28px;
+}
+
+%text-16 {
+    @extend %text-28;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+%text-11 {
+    @extend %text-28;
+    font-size: 11px;
+    line-height: 20px;
+}

@@ -1,0 +1,36 @@
+@import '../../styles/text-presets';
+
+@keyframes shift {
+   0% { background-position-y: 0%; }
+   100% { background-position-y: 100% ; }
+}
+
+.wrapper {
+   padding: 16px 30px 32px;
+   
+   background-image: var(--bg);
+   background-repeat: no-repeat;
+   background-size: cover;
+   background-position: 50% 0%;
+
+   color: white;
+
+   display: flex;
+   justify-content: space-between;
+
+   animation-name: shift;
+   animation-timing-function: linear;
+   animation-duration: 600s;
+   animation-iteration-count: infinite;
+   animation-direction: alternate;
+}
+
+.header__title {
+   @extend %text-28;
+   text-transform: uppercase;
+}
+
+.header__description {
+   @extend %text-16;
+   margin-top: 8px;
+}

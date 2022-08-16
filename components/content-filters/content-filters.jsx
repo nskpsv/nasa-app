@@ -1,9 +1,9 @@
 import React from "react";
-import classes from '../../styles/modules/content-filters.module.scss';
+import classes from './content-filters.module.scss';
 
 export default () => {
     return (
-        <>
+        <section>
             <div className={classes.filter}>
                 <label className={classes.filter__label}>Отображать расстояние:
                     <a className={`${classes.filter__value} ${classes.filter__value_active}`}>в километрах</a>
@@ -17,6 +17,6 @@ export default () => {
                     Показать только опасные
                 </label>
             </div>
-        </>
+        </section>
     )
 }

@@ -1,5 +1,5 @@
 import React from 'react';
-import classes from '../../styles/modules/asteroid-list-item.module.scss';
+import classes from './asteroid-list-item.module.scss';
 
 export default ({ asteroid }) => {
     return (

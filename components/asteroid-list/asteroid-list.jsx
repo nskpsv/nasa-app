@@ -1,5 +1,5 @@
-import classes from '../../styles/modules/asteroid-list.module.scss';
-import AsteroidListItem from './asteroid-list-item';
+import classes from './asteroid-list.module.scss';
+import AsteroidListItem from '../asteroid-list-item/asteroid-list-item';
 
 export default ({ asteroids }) => {
     if (!asteroids) {
