@@ -2,11 +2,13 @@
 @import '../../styles/colors.scss';
 
 .content_header {
-
+    display: flex;
+    flex-direction: column;
 }
 
 .content_header__title {
     @extend %text-24;
+    display: block;
     height: 36px;
     border-bottom: 1px solid $lines-gray;
 }

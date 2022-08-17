@@ -3,8 +3,8 @@ import classes from './footer.module.scss';
 
 export default () => {
     return (
-        <React.Fragment>
-            <p className={classes.footer_text}>2022 © Все права и планета защищены</p>
-        </React.Fragment>
+        <footer className={classes.footer}>
+            <p className={classes.footer__text}>2022 © Все права и планета защищены</p>
+        </footer>
     )
 }

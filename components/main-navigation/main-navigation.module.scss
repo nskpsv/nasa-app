@@ -1,9 +1,16 @@
 @import '../../styles/text-presets.scss';
 
+.main_nav {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 0 24px;
+    margin: 16px 30px 16px 16px;
+}
+
 .main_nav__link {
     @extend %text-16;
     text-decoration: underline;
-    margin-left: 24px;
 }
 
 .active {

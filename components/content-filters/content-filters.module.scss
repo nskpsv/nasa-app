@@ -1,0 +1,9 @@
+@import '../../styles/text-presets.scss';
+
+.filters_list {
+    @extend %text-16;
+    min-height: 32px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}

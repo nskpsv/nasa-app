@@ -5,9 +5,17 @@
    100% { background-position-y: 100% ; }
 }
 
-.wrapper {
-   padding: 16px 30px 32px;
-   
+@media only screen and (max-width: 1220px) {
+   .wrapper {
+      width: 1000px;
+   }
+}
+
+.wrapper { 
+   left: 0;
+   right: 0;
+   position: fixed;
+   min-height: 110px;
    background-image: var(--bg);
    background-repeat: no-repeat;
    background-size: cover;
@@ -16,13 +24,19 @@
    color: white;
 
    display: flex;
+   flex-wrap: wrap;
    justify-content: space-between;
 
    animation-name: shift;
    animation-timing-function: linear;
-   animation-duration: 600s;
+   animation-duration: 500s;
    animation-iteration-count: infinite;
    animation-direction: alternate;
+}
+
+.header {
+   margin-top: 16px;
+   margin-left: 30px;
 }
 
 .header__title {

@@ -1,17 +1,26 @@
 import classes from './asteroid-list.module.scss';
 import AsteroidListItem from '../asteroid-list-item/asteroid-list-item';
+import { prepareDataForListItem } from '../../utils/asteroids';
 
-export default ({ asteroids }) => {
-    if (!asteroids) {
-        return <p>Loading...</p>
+export default ({ asteroidsList }) => {
+
+    if (!asteroidsList) {
+        return (
+            <div className={classes.loader}>
+                <p className={classes.loader__text}>Loading...</p>
+            </div>
+        )
     }
 
     return (
         <section className={classes.list}>
-            {asteroids.map(astr => {
-                <AsteroidListItem className={classes.list__item}
-                key={astr.id} asteroid={astr} />
-            })}
+            {
+                Object
+                    .keys(asteroidsList)
+                    .map(key => {
+                        return <AsteroidListItem key={asteroidsList[key].id} asteroid={prepareDataForListItem(asteroidsList[key])} />
+                    })
+            }
         </section>
     )
 }

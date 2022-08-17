@@ -1,22 +1,18 @@
 import React from "react";
 import classes from './content-filters.module.scss';
+import IsDanger from '../filters/is-danger/is-danger';
+import MeasureDistance from '../filters/measure-distance/measure-distance';
 
-export default () => {
+export default ({ filterProps: [filters, setFilters] }) => {
+
+    const onFilterClick = (filter) => {
+        setFilters(Object.assign({}, filters, filter))
+    }
+
     return (
-        <section>
-            <div className={classes.filter}>
-                <label className={classes.filter__label}>Отображать расстояние:
-                    <a className={`${classes.filter__value} ${classes.filter__value_active}`}>в километрах</a>
-                    {' '}|{' '}
-                    <a className={classes.filter__value}>в лунных орбитах</a>
-                </label>
-            </div>
-            <div className={classes.filter}>
-                <label className={classes.filter__label}>
-                    <input type='checkbox' name='danger'></input>
-                    Показать только опасные
-                </label>
-            </div>
+        <section className={classes.filters_list}>
+            <MeasureDistance onClick={onFilterClick} state={filters.measurDistance}/>
+            <IsDanger onClick={onFilterClick} state={filters.isDanger}/>
         </section>
     )
 }
