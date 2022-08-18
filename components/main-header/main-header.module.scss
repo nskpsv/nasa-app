@@ -5,17 +5,12 @@
    100% { background-position-y: 100% ; }
 }
 
-@media only screen and (max-width: 1220px) {
-   .wrapper {
-      width: 1000px;
-   }
-}
-
 .wrapper { 
-   left: 0;
-   right: 0;
+   left: 0; right: 0;
+   margin: 0 auto;
    position: fixed;
-   min-height: 110px;
+   min-height: 108px;
+   max-width: inherit;
    background-image: var(--bg);
    background-repeat: no-repeat;
    background-size: cover;
@@ -26,7 +21,7 @@
    display: flex;
    flex-wrap: wrap;
    justify-content: space-between;
-
+   z-index: 2;
    animation-name: shift;
    animation-timing-function: linear;
    animation-duration: 500s;
@@ -46,5 +41,21 @@
 
 .header__description {
    @extend %text-16;
+   line-height: 20px;
    margin-top: 8px;
+   margin-left: 3px;
+}
+
+@media only screen and (max-width: 599px) {
+   .wrapper {
+      flex-direction: column;
+   }
+   .header {
+      margin-left: 16px;
+   }
+
+   .header__description {
+      margin-left: 0;
+      width: 300px;
+   }
 }

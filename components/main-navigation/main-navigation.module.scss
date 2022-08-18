@@ -10,6 +10,7 @@
 
 .main_nav__link {
     @extend %text-16;
+    line-height: 20px;
     text-decoration: underline;
 }
 

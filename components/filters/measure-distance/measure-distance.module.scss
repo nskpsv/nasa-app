@@ -1,3 +1,5 @@
+@import '../../../styles/text-presets.scss';
+
 .filter {
     display: flex;
     flex-wrap: wrap;
@@ -5,4 +7,15 @@
 
 .filter__label {
     margin-right: 5px;
+}
+
+.filter__value {
+    cursor: pointer;
+    @extend %text-16;
+    text-decoration: underline;
+}
+
+.filter__value_active {
+    font-weight: 700;
+    text-decoration: none;
 }

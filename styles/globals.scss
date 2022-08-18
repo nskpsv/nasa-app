@@ -9,8 +9,12 @@ html, body, h1, h2, h3, p {
   font-family: Helvetica, Arial, sans-serif;
 }
 
+#__next {
+  max-width: inherit;
+}
+
 body {
-  max-width: 1200px;
+  max-width: 1400px;
   min-width: 320px;
   margin: 0 auto;
   top: 0; bottom: 0; left: 0; right: 0;

@@ -1,6 +1,7 @@
 .wrapper {
     margin: 0 10px;
     position: relative;
+    max-width: inherit;
 }
 
 @media screen and (max-width: 1000px) {
