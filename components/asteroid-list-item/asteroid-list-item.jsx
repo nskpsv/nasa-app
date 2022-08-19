@@ -3,7 +3,7 @@ import classes from './asteroid-list-item.module.scss';
 import dangImg from './assets/dangerous.svg';
 import noDangImg from './assets/non-dangerous.svg'
 
-export default ({ asteroid }) => {
+export default ({ asteroid, option, onAddToOrder }) => {
 
     return (
         <div className={classes.asteroid}>
@@ -21,7 +21,7 @@ export default ({ asteroid }) => {
                     {`Ø ${asteroid.dia} м`}
                 </p>
                 <p className={classes.asteroid__spec_item}>
-                    {`↔ ${asteroid.approachDistance?.km} км`}
+                    {`↔ ${option.approachDistance === 'km' ? `${asteroid.approachDistance.km} км` : `${asteroid.approachDistance.lunar} л.о.`}`}
                 </p>
                 <p className={classes.asteroid__spec_item}>
                     {asteroid.isDanger
@@ -29,7 +29,7 @@ export default ({ asteroid }) => {
                         : 'Не опасен'}
                 </p>
             </div>
-            <button className={classes.asteroid__destroy_button}>уничтожить</button>
+            <button className={classes.asteroid__destroy_button} onClick={() => onAddToOrder({[asteroid.id]: asteroid})}>уничтожить</button>
         </div>
     )
 }

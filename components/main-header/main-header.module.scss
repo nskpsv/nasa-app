@@ -24,7 +24,7 @@
    z-index: 2;
    animation-name: shift;
    animation-timing-function: linear;
-   animation-duration: 500s;
+   animation-duration: 600s;
    animation-iteration-count: infinite;
    animation-direction: alternate;
 }
@@ -49,6 +49,7 @@
 @media only screen and (max-width: 599px) {
    .wrapper {
       flex-direction: column;
+      animation-duration: 250s;
    }
    .header {
       margin-left: 16px;

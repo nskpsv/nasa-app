@@ -1,18 +1,22 @@
-export const convertToEnum = (data) => {
+export const extractDataForState = (list) => {
 
-    const result = {};
+    const map = {};
+    const arr = [];
 
     Object
-        .keys(data.near_earth_objects)
+        .keys(list)
         .map(key => {
-            data.near_earth_objects[key]
-                .map(asteroid => result[asteroid.id] = asteroid)
+            list[key]
+                .map(asteroid => {
+                    map[asteroid.id] = prepareDataForListItem(asteroid)
+                    arr.push(map[asteroid.id])
+                })
         });
 
-    return result;
+    return { map, arr };
 };
 
-export const prepareDataForListItem = (ast) => {
+const prepareDataForListItem = (ast) => {
 
     const month = {
         '00': 'января',
@@ -38,6 +42,32 @@ export const prepareDataForListItem = (ast) => {
     result.approachDistance = {};
     result.approachDistance.km = Math.round(Number(ast.close_approach_data[0].miss_distance.kilometers));
     result.approachDistance.lunar = Math.round(Number(ast.close_approach_data[0].miss_distance.lunar));
+    result.id = ast.id;
 
     return result;
+};
+
+export const filterAstList = (list, filters) => {
+    let result = [...list];
+
+    for (let key in filters) {
+        switch (typeof (filters[key])) {
+            case 'boolean': {
+                result = actions.bool(key, filters[key], result);
+                break;
+            };
+        };
+    };
+
+    return result;
+};
+
+const actions = {
+    bool: (filter, fValue, list) => {
+        if (fValue) {
+            return list.filter((ast) => ast[filter] === fValue)
+        } else {
+            return list
+        }
+    },
 };

@@ -1,21 +1,21 @@
 @import '../../../styles/text-presets.scss';
 
-.filter {
+.option {
     display: flex;
     flex-wrap: wrap;
 }
 
-.filter__label {
+.option__label {
     margin-right: 5px;
 }
 
-.filter__value {
+.option__value {
     cursor: pointer;
     @extend %text-16;
     text-decoration: underline;
 }
 
-.filter__value_active {
+.option__value_active {
     font-weight: 700;
     text-decoration: none;
 }

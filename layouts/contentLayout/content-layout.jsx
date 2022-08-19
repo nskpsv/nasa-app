@@ -2,11 +2,11 @@ import React from "react"
 import classes from './content-layout.module.scss';
 import ContentHeader from "../../components/content-header/content-header"
 
-export default ({ children, filterProps }) => {
+export default ({ children, filterProps, optionProps }) => {
     
     return (
         <section className={classes.wrapper}>
-            <ContentHeader filterProps={filterProps} />
+            <ContentHeader filterProps={filterProps} optionProps={optionProps} />
             <>
                 {children}
             </>

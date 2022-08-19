@@ -1,6 +1,6 @@
 import classes from './is-danger.module.scss';
 
-export default () => {
+export default ({ state, onClick }) => {
 
     return (
         <div className={classes.filter}>
@@ -8,9 +8,10 @@ export default () => {
                     className={classes.filter__value}
                     id='danger'
                     type='checkbox'
-                    onClick={(e) => onFilterClick({ isDangerous: e.target.checked })}>
+                    checked={state}
+                    onChange={(e) => onClick({ isDanger: !state })}>
                 </input>
-                <label className={classes.filter__label} for='danger'>
+                <label className={classes.filter__label} htmlFor='danger'>
                 Показать только опасные
                 </label>
         </div>

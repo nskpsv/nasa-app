@@ -30,3 +30,17 @@
     height: 36px;
     border-bottom: 1px solid $lines-gray;
 }
+
+.content_header__display_settings {
+    @extend %text-16;
+    margin-top: 8px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+@media only screen and (max-width: 787px) {
+    .content_header__display_settings {
+        flex-direction: column;
+    }
+}
