@@ -13,7 +13,6 @@ npm run dev
 
 ## Техническое задание:
 
-```bash
 Нужно сверстать онлайн-сервис по мониторингу и уничтожению опасных астероидов на основе данных API NASA.
 АПИ: https://api.nasa.gov (https://api.nasa.gov/) Asteroids - NeoWs
 
@@ -62,4 +61,4 @@ https://www.figma.com/file/UOdZ5Qzkif1Ideye76OpjA/Armaggedon-V2?node-id=0%3A1
 - тесты;
 - если вы задеплоите ваш проект на любой удобный для вас хостинг;
 - документация/инструкция по сборке проекта (README);
-```
+
