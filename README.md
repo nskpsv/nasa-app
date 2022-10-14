@@ -47,7 +47,7 @@ npm run dev
 Бригада будет доставлена на астероид в нужный момент и выполнит свою нелёгкую работу.
 
 Дизайн-макет отрисован только для первой страницы, остальные две вы делаете на своё усмотрение.
-https://www.figma.com/file/UOdZ5Qzkif1Ideye76OpjA/Armaggedon-V2?node-id=0%3A1
+https://www.figma.com/file/WzShoPTXgKE2bWl7B4mQmK/Armaggedon-V2-(Copy)?node-id=0%3A1
 
 - Использовать Next.js (также принимаются решения на React, если будет реализован SSR);
 - Использование redux нежелательно;
