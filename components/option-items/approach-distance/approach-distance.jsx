@@ -1,18 +1,18 @@
-import classes from './approach-distance.module.scss';
+import styles from './approach-distance.module.scss';
 
 export default ({ onClick, state }) => {
 
     return (
-        <div className={classes.option}>
-            <label className={classes.option__label}>Отображать расстояние:</label>
-            <div className={classes.option__values}>
+        <div className={styles.option}>
+            <label className={styles.option__label}>Отображать расстояние:</label>
+            <div className={styles.option__values}>
                 <a
-                    className={`${classes.option__value} ${state === 'km' ? classes.option__value_active : null}`}
+                    className={`${styles.option__value} ${state === 'km' ? styles.option__value_active : null}`}
                     onClick={() => onClick({ approachDistance: 'km' })}>
                     в километрах
                 </a>
                 {' '}|{' '}
-                <a className={`${classes.option__value} ${state === 'lunar' ? classes.option__value_active : null}`}
+                <a className={`${styles.option__value} ${state === 'lunar' ? styles.option__value_active : null}`}
                     onClick={() => onClick({ approachDistance: 'lunar' })}>
                     в лунных орбитах
                 </a>

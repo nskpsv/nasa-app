@@ -1,10 +1,10 @@
 import React from 'react';
-import classes from './footer.module.scss';
+import styles from './footer.module.scss';
 
 export default () => {
     return (
-        <footer className={classes.footer}>
-            <p className={classes.footer__text}>2022 © Все права и планета защищены</p>
+        <footer className={styles.footer}>
+            <p className={styles.footer__text}>2022 © Все права и планета защищены</p>
         </footer>
     )
 }

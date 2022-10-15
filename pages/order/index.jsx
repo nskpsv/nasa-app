@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import classes from './order.module.scss';
+import styles from './order.module.scss';
 
-export default ({ state = null }) => {
+export default ({ initstate }) => {
 
-    const [state, setState] = useState(state);
+    const [state, setState] = useState(initstate);
 
     useEffect(() => {
         if (!state) {

@@ -3,13 +3,14 @@
 
 .asteroid {
     @extend %text-16;
+    cursor: pointer;
     width: 280px;
     height: 170px;
     position: relative;
     border-radius: 5px;
     padding: 5px;
     transition-property: all;
-    transition-duration: .2s;
+    transition-duration: .1s;
     transition-timing-function: ease-out;
 }
 

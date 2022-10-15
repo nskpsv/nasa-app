@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import ContentLayout from '../../layouts/contentLayout/content-layout';
 import AsteroidList from '../../components/asteroid-list/asteroid-list';
 import Footer from '../../components/footer/footer';
-import classes from './index.module.scss';
+import styles from './index.module.scss';
 import { extractDataForState, filterAstList } from '../../utils/asteroids';
 
 
@@ -43,7 +43,7 @@ export default ({ initState }) => {
     const setOreder = (item) => {
         const buff = {
             ...state,
-            order: Object.assign({}, order, item)
+            order: Object.assign({}, state.order, item)
         }
         setState(buff);
         localStorage.setItem('order', JSON.stringify(buff.order));
@@ -60,7 +60,7 @@ export default ({ initState }) => {
 
     return (
         <>
-            <main className={classes.main_content}>
+            <main className={styles.main_content}>
                 <ContentLayout filterProps={[filters, setFilters]} optionProps={[options, setOptions]}>
                     <AsteroidList asteroidsList={filtredList} setList={setAsteroidsData} option={options} next={state.nextLink} onAddToOrder={setOreder} />
                 </ContentLayout>

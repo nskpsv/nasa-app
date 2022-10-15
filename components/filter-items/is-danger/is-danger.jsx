@@ -1,17 +1,17 @@
-import classes from './is-danger.module.scss';
+import styles from './is-danger.module.scss';
 
 export default ({ state, onClick }) => {
 
     return (
-        <div className={classes.filter}>
+        <div className={styles.filter}>
                 <input
-                    className={classes.filter__value}
+                    className={styles.filter__value}
                     id='danger'
                     type='checkbox'
                     checked={state}
                     onChange={(e) => onClick({ isDanger: !state })}>
                 </input>
-                <label className={classes.filter__label} htmlFor='danger'>
+                <label className={styles.filter__label} htmlFor='danger'>
                 Показать только опасные
                 </label>
         </div>

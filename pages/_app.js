@@ -30,7 +30,7 @@ export default function MyApp({ Component, pageProps, bgUrl, initAsteroidsList, 
 };
 
 MyApp.getInitialProps = async () => {
-
+    
     const bgUrl = await getApod();
     const asteroidsData = await getAsteroidsData();
     const initAsteroidsList = extractDataForState(asteroidsData.near_earth_objects);
