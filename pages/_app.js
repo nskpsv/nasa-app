@@ -15,7 +15,7 @@ export default function MyApp({ Component, pageProps, bgUrl, initAsteroidsList, 
         options: { approachDistance: 'km' },
         order: {},
     };
-
+    
     useEffect(() => {
         sessionStorage.setItem('state', JSON.stringify(state));
         const oreder = JSON.parse(localStorage.getItem('order'));

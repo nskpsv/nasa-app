@@ -1,57 +1,12 @@
 @import '../../styles/text-presets.scss';
 @import '../../styles/colors.scss';
 
-.asteroid {
-    @extend %text-16;
-    cursor: pointer;
-    width: 280px;
-    height: 170px;
+.list_item {
     position: relative;
-    border-radius: 5px;
-    padding: 5px;
-    transition-property: all;
-    transition-duration: .1s;
-    transition-timing-function: ease-out;
+    transition: all .1s ease-in-out;
 }
 
-.asteroid:hover {
-    cursor: default;
-    transform: scale(1.05);
-}
-
-#name {
-    text-decoration: underline;
-}
-
-.asteroid__image {
-    float: left;
-    margin-top: 8px;
-    margin-right: 11px;
-}
-
-.asteroid__spec {
-    margin-top: 8px;
-}
-
-.asteroid__destroy_button {
-    @extend %text-11;
-    text-transform: uppercase;
-    color: white;
-    letter-spacing: 1px;
-    background: $blue-base;
-    border-radius: 24px;
-    border: 0;
-    padding: 2px 11px;
-    position: absolute;
-    bottom: 5px;
-    left: 5px;
-
-    transition-property: all;
-    transition-duration: 0s;
-    transition-timing-function: ease-in-out;
-}
-
-.asteroid__destroy_button:hover {
+.list_item:hover {
     cursor: pointer;
-    box-shadow: 0 0 5px 2px rgba($color: #b80101, $alpha: .3);
+    transform: scale(1.05);
 }

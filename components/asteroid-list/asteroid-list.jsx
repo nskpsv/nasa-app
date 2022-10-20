@@ -4,8 +4,8 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import { useEffect, useState } from 'react';
 import { getAsteroidsData } from '../../services/asteroids';
 
-export default ({ asteroidsList, setList, option, next, onAddToOrder }) => {
-    
+export default ({ asteroidsList, asteroidsMap, setList, options, next, onAddToOrder, updateMap }) => {
+
     const [hasMore, setHasMore] = useState(true);
     const getMore = async () => {
         const list = await getAsteroidsData(next);
@@ -27,26 +27,31 @@ export default ({ asteroidsList, setList, option, next, onAddToOrder }) => {
     }
 
     return (
-            <InfiniteScroll
-                dataLength={Object.keys(asteroidsList).length}
-                next={getMore}
-                hasMore={hasMore}
-                loader={<h1 style={
-                    {
-                        bottom: '50px',
-                        right: '60px',
-                        position: 'absolute'
-                    }}>
-                        Loading...</h1>}
-                endMessage={<h3>End</h3>}
-                className={styles.list}
-                scrollThreshold='95%'>
+        <InfiniteScroll
+            dataLength={Object.keys(asteroidsList).length}
+            next={getMore}
+            hasMore={hasMore}
+            loader={<h1 style={
                 {
-                    asteroidsList.map((ast, i) => {
-                        return <AsteroidListItem key={i} asteroid={ast} option={option} onAddToOrder={onAddToOrder} />
-                    })
-                }
-            </InfiniteScroll>
+                    bottom: '50px',
+                    right: '60px',
+                    position: 'absolute'
+                }}>
+                Loading...</h1>}
+            endMessage={<h3>End</h3>}
+            className={styles.list}
+            scrollThreshold='95%'>
+            {
+                asteroidsList.map((ast, i) => {
+                    return <AsteroidListItem
+                        key={i}
+                        asteroid={asteroidsMap[ast.id]}
+                        options={options}
+                        onAddToOrder={onAddToOrder}
+                        onAddAsteroidInfo={updateMap} />
+                })
+            }
+        </InfiniteScroll>
 
     )
 }

@@ -1,35 +1,39 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styles from './asteroid-list-item.module.scss';
-import dangImg from './assets/dangerous.svg';
-import noDangImg from './assets/non-dangerous.svg'
+import AsteroidDetails from '../asteroid-details/asteroid-details';
+import { disableScroll, enableScroll } from '../../utils/scroll';
+import AsteroidDescription from '../asteroid-description/asteroid-description';
 
-export default ({ asteroid, option, onAddToOrder }) => {
+const AsteroidListItem = ({ asteroid, options, onAddToOrder, onAddAsteroidInfo }) => {
+
+    const [showDetails, setShowDetails] = useState(false);
+
+    const showFullInfo = () => {
+        setShowDetails((prev) => !prev)
+        disableScroll();
+    };
+
+    const closeFullInfo = (e) => {
+        e.stopPropagation();
+        setShowDetails((prev) => !prev);
+        enableScroll();
+    };
+
+    const description = <AsteroidDescription asteroid={asteroid} options={options} onAddToOrder={onAddToOrder} />;
 
     return (
-        <div className={styles.asteroid} onClick={() => {console.log(asteroid);}}>
-            <p className={styles.asteroid__approach_date}>
-                {asteroid.approachDate}
-            </p>
-            <div className={styles.asteroid__image}>
-                <img src={asteroid.isDanger ? dangImg.src : noDangImg.src} />
+        <>
+            {
+                showDetails &&
+                <AsteroidDetails asteroid={asteroid} onAddAsteroidInfo={onAddAsteroidInfo} options={options} onClick={closeFullInfo}>
+                    {description}
+                </AsteroidDetails >
+            }
+            <div className={styles.list_item} onClick={showFullInfo}>
+                {description}
             </div>
-            <div className={styles.asteroid__spec}>
-                <p id={styles.name} className={styles.asteroid__spec_item}>
-                    {`Астероид ${asteroid.name}`}
-                </p>
-                <p className={styles.asteroid__spec_item}>
-                    {`Ø ${asteroid.dia} м`}
-                </p>
-                <p className={styles.asteroid__spec_item}>
-                    {`↔ ${option.approachDistance === 'km' ? asteroid.approachDistance.km : asteroid.approachDistance.lunar}`}
-                </p>
-                <p className={styles.asteroid__spec_item}>
-                    {asteroid.isDanger
-                        ? 'Опасен'
-                        : 'Не опасен'}
-                </p>
-            </div>
-            <button className={styles.asteroid__destroy_button} onClick={() => onAddToOrder({[asteroid.id]: asteroid})}>уничтожить</button>
-        </div>
+        </>
     )
-}
+};
+
+export default AsteroidListItem;

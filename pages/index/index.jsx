@@ -12,12 +12,14 @@ export default ({ initState }) => {
     const [filtredList, setfiltredList] = useState(null);
     const {filters, options, asteroidsList, order} = state;
 
+    const saveStateToStorage = (state) => sessionStorage.setItem('state', JSON.stringify(state));
+
     const setFilters = (filter) => {
         setState({
             ...state, 
             filters: {...filters, ...filter}
         });
-        sessionStorage.setItem('state', JSON.stringify(state));
+        saveStateToStorage(state);
     };
 
     const setOptions = (option) => {
@@ -25,7 +27,7 @@ export default ({ initState }) => {
             ...state, 
             options: {...options, ...option}
         });
-        sessionStorage.setItem('state', JSON.stringify(state));
+        saveStateToStorage(state);
     };
 
     const setAsteroidsData = (list) => {
@@ -37,10 +39,18 @@ export default ({ initState }) => {
             asteroidsMap: {...state.asteroidsMap, ...data.map},
             nextLink: list.links.next
         });
-        sessionStorage.setItem('state', JSON.stringify(state));
+        saveStateToStorage(state);
     };
+    
+    const updateAsteroidsMap = (asteroid) => {
+        setState({
+            ...state,
+            asteroidsMap: {...state.asteroidsMap, [asteroid.id]: asteroid}
+        });
+        saveStateToStorage(state);
+    }
 
-    const setOreder = (item) => {
+    const setOrder = (item) => {
         const buff = {
             ...state,
             order: Object.assign({}, state.order, item)
@@ -62,7 +72,14 @@ export default ({ initState }) => {
         <>
             <main className={styles.main_content}>
                 <ContentLayout filterProps={[filters, setFilters]} optionProps={[options, setOptions]}>
-                    <AsteroidList asteroidsList={filtredList} setList={setAsteroidsData} option={options} next={state.nextLink} onAddToOrder={setOreder} />
+                    <AsteroidList 
+                    asteroidsList={filtredList}
+                    asteroidsMap={state.asteroidsMap}
+                    setList={setAsteroidsData} 
+                    options={options}
+                    next={state.nextLink}
+                    onAddToOrder={setOrder}
+                    updateMap={updateAsteroidsMap} />
                 </ContentLayout>
             </main>
             <Footer />

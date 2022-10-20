@@ -3,7 +3,7 @@
 :root {
   --bg: $bg-gray;
 }
-body, h1, h2, h3, p {
+body, h1, h2, h3, h4, p {
   padding: 0;
   margin: 0;
   font-family: Helvetica, Arial, sans-serif;
@@ -14,6 +14,7 @@ body, h1, h2, h3, p {
 }
 
 body {
+  overflow-y: scroll;
   max-width: 1400px;
   min-width: 320px;
   margin: 0 auto;

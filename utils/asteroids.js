@@ -1,5 +1,3 @@
-import { getAsteroidsData } from "../services/asteroids";
-
 export const extractDataForState = (list) => {
     
     const map = {};
@@ -10,9 +8,7 @@ export const extractDataForState = (list) => {
         .map(key => {
             list[key]
                 .map(async (asteroid) => {
-                    const fullData = await getAsteroidsData(asteroid.links.self);
-                    console.log(fullData);
-                    map[asteroid.id] = prepareDataForListItem(asteroid, fullData)
+                    map[asteroid.id] = prepareDataForListItem(asteroid)
                     arr.push(map[asteroid.id])
                 })
         });
@@ -20,29 +16,34 @@ export const extractDataForState = (list) => {
     return { map, arr };
 };
 
-const prepareDataForListItem = (ast, fullData) => {
-
+const prepareDataForListItem = (ast) => {
     const result = {};
 
     result.isDanger = ast.is_potentially_hazardous_asteroid;
     result.approachDate = convertDate(ast.close_approach_data[0].close_approach_date);
-    result.name = fullData.designation;
+    result.name = ast.name.match(/(?<=\().+?(?=\))/)[0];
     result.dia = (Math.round(ast.estimated_diameter.meters.estimated_diameter_max + ast.estimated_diameter.meters.estimated_diameter_min) / 2);
     result.approachDistance = getApproachDistance(ast.close_approach_data[0]),
     result.id = ast.id;
-    result.allApproachDates = fullData.close_approach_data.map(data => {
+    result.selfLink = ast.links.self;
+    
+    return result;
+};
 
+export const addAsteroidInfo = (asteroid, info) => {
+
+    const list = info.close_approach_data.map(data => {
+        
         return {
             approachDate: convertDate(data.close_approach_date),
             approachTime: data.close_approach_date_full.match(/\d\d:\d\d/)[0],
-            velocity: data.relative_velocity.kilometers_per_second,
+            velocity: parseFloat(data.relative_velocity.kilometers_per_second).toFixed(2) + 'км/с',
             approachDistance: getApproachDistance(data),
             orbitingBody: data.orbiting_body,
         };
     });
-
-
-    return result;
+  
+    return {...asteroid, listOfApproaches: [...list]};
 };
 
 const getApproachDistance = (dataObj) => {
@@ -57,18 +58,18 @@ const convertDate = (date) => {
 
     const [y, m, d] = date.split('-');
     const month = {
-        '00': 'января',
-        '01': 'февраля',
-        '02': 'марта',
-        '03': 'апреля',
-        '04': 'мая',
-        '05': 'июня',
-        '06': 'июля',
-        '07': 'августа',
-        '08': 'сентября',
-        '09': 'октября',
-        '10': 'ноября',
-        '11': 'декабря'
+        '01': 'января',
+        '02': 'февраля',
+        '03': 'марта',
+        '04': 'апреля',
+        '05': 'мая',
+        '06': 'июня',
+        '07': 'июля',
+        '08': 'августа',
+        '09': 'сентября',
+        '10': 'октября',
+        '11': 'ноября',
+        '12': 'декабря'
     };
 
     return `${d} ${month[m]} ${y}`
