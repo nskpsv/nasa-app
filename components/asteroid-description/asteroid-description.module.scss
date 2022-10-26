@@ -1,5 +1,6 @@
 @import '../../styles/text-presets.scss';
 @import '../../styles/colors.scss';
+@import '../../styles/elements.scss';
 
 .asteroid {
     @extend %text-16;
@@ -19,7 +20,7 @@
 
 #name {
     border-bottom: 1px solid;
-    line-height: 12px;
+    line-height: 13px;
     margin: 6px 0;
 }
 
@@ -35,22 +36,12 @@
     justify-content: flex-start;
 }
 
-.buttons__destroy {
-    @extend %text-11;
-    text-transform: uppercase;
-    color: white;
-    letter-spacing: 1px;
-    background: $blue-base;
-    border-radius: 24px;
-    border: 0;
-    padding: 2px 11px;
-
-    transition-property: all;
-    transition-duration: 0s;
-    transition-timing-function: ease-in-out;
+.buttons__destroy,
+.buttons__cancel {
+    @extend %blue-button-round-24;
 }
 
+.buttons__cancel:hover,
 .buttons__destroy:hover {
-    cursor: pointer;
-    box-shadow: 0 0 5px 2px rgba($color: #b80101, $alpha: .3);
+    @extend %button-hover
 }

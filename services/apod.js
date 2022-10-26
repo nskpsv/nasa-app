@@ -4,5 +4,5 @@ export const getApod = async () => {
         );
     const picture = await res.json();
 
-    return picture.url
+    return picture
 };

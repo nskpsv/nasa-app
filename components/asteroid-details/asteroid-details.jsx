@@ -13,7 +13,7 @@ const AsteroidDetails = ({ asteroid, onClick, children, onAddAsteroidInfo, optio
                 }))
         }
     }, [])
-    console.log(asteroid);
+
     return (
         <div className={styles.container}>
             <div className={styles.container__background} onClick={onClick}></div>

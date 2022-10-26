@@ -1,25 +1,10 @@
 .list {
-    position: absolute;
-    top: 240px;
-    padding-bottom: 50px;
+    margin: 40px 30px 0;
     display: flex;
     flex-wrap: wrap;
     gap: 30px 10px;
-    justify-content: space-around;
-}
-
-@media only screen and (max-width: 787px) {
-    .list {
-        top: 286px;
-        gap: 20px 2px;
-    }
-}
-
-@media only screen and (max-width: 599px) {
-    .list {
-        top: 343px;
-
-    }
+    justify-content: space-between;
+    padding-bottom: 50px;
 }
 
 .loader {
@@ -34,4 +19,11 @@
     top: 0; bottom: 0; left: 0; right: 0;
     margin: auto;
     font-size: 30px;
+}
+
+@media only screen and (max-width: 940px) {
+    .list {
+        justify-content: space-around;
+        margin: 32px 16px;
+    }
 }

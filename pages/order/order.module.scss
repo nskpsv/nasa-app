@@ -1,0 +1,74 @@
+@import '../../styles/colors.scss';
+@import '../../styles/elements.scss';
+
+.order_layout {
+    margin: 20px 30px 0;
+}
+
+.order {
+    display: flex;
+    flex-direction: column;
+    gap: 10px 0;
+}
+
+.scale {
+    display: flex;
+    justify-content: space-around;
+    border-radius: 25px;
+    padding: 2px;
+    box-shadow: 0 0 5px $gray-dark;
+}
+
+.scale__item {
+    flex-basis: 50px;
+    width: 0;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 20px;
+}
+
+.controls__count {
+    @extend %text-24;
+    font-weight: 400;
+}
+
+.controls__count_number {
+    border-bottom: 1px solid;
+    border-top: 1px solid;
+    font-weight: 700;
+}
+
+.controls__count_number::before {
+    content: '> ';
+}
+
+.controls__count_number::after {
+    content: ' <';
+}
+
+.controls__buttons {
+    display: flex;
+    gap: 0 10px;
+}
+
+.destroy_button,
+.clear_button {
+    @extend %иblue-button-round-4;
+}
+
+.destroy_button:hover,
+.clear_button:hover {
+    @extend %button-hover;
+}
+
+.asteroids {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: space-between;
+}

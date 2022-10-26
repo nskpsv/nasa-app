@@ -4,7 +4,7 @@ import AsteroidDetails from '../asteroid-details/asteroid-details';
 import { disableScroll, enableScroll } from '../../utils/scroll';
 import AsteroidDescription from '../asteroid-description/asteroid-description';
 
-const AsteroidListItem = ({ asteroid, options, onAddToOrder, onAddAsteroidInfo }) => {
+const AsteroidListItem = ({ asteroid, options, addToOrder, onAddAsteroidInfo }) => {
 
     const [showDetails, setShowDetails] = useState(false);
 
@@ -19,7 +19,7 @@ const AsteroidListItem = ({ asteroid, options, onAddToOrder, onAddAsteroidInfo }
         enableScroll();
     };
 
-    const description = <AsteroidDescription asteroid={asteroid} options={options} onAddToOrder={onAddToOrder} />;
+    const description = <AsteroidDescription asteroid={asteroid} options={options} addToOrder={addToOrder} />;
 
     return (
         <>

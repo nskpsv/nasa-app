@@ -1,20 +1,23 @@
 @import '../../styles/text-presets.scss';
 
-.main_nav {
+.navigation {
     display: flex;
     flex-direction: row;
+    align-items: baseline;
     flex-wrap: nowrap;
     gap: 0 24px;
     margin: 16px 30px 16px 16px;
 }
 
-.main_nav__link {
+.navigation__link {
     @extend %text-16;
     line-height: 20px;
-    text-decoration: underline;
+    height: 16px;
+    border-bottom: 1px solid;
 }
 
-.active {
-    text-decoration: none;
+.navigation__link_active {
+    border: none;
+    height: 16px;
     font-weight: 700;
 }

@@ -9,7 +9,7 @@ export default ({ state, onClick }) => {
                     id='danger'
                     type='checkbox'
                     checked={state}
-                    onChange={(e) => onClick({ isDanger: !state })}>
+                    onChange={() => onClick({ isDanger: !state })}>
                 </input>
                 <label className={styles.filter__label} htmlFor='danger'>
                 Показать только опасные

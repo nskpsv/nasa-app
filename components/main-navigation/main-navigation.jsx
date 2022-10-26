@@ -8,19 +8,25 @@ const navigation = [
     { id: 2, title: 'Заказ', path: '/order' },
 ]
 
-export default () => {
+const Navigation = () => {
 
     const { pathname } = useRouter();
 
     return (
-        <nav className={styles.main_nav}>
+        <nav className={styles.navigation}>
             {navigation.map(({ id, title, path }) => {
                 return (
                     <Link key={id} href={path}>
-                        <a className={`${styles.main_nav__link} ${pathname === path ? styles.active : null}`}>{title}</a>
+                        <a className={
+                            pathname === path
+                                ? styles.navigation__link_active
+                                : styles.navigation__link
+                        }>{title}</a>
                     </Link>
                 )
             })}
         </nav>
     )
-}
+};
+
+export default Navigation;

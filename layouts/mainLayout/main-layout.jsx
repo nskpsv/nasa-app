@@ -2,6 +2,7 @@ import MainHeader from '../../components/main-header/main-header'
 import React from "react"
 import styles from './main-layout.module.scss';
 import Head from 'next/head';
+import Footer from '../../components/footer/footer';
 
 export default ({ children, bgUrl }) => {
    return (
@@ -13,6 +14,7 @@ export default ({ children, bgUrl }) => {
          <>
             {children}
          </>
+         <Footer />
       </section>
    )
 }

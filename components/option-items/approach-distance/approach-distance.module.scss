@@ -2,20 +2,24 @@
 
 .option {
     display: flex;
+    align-items: center;
     flex-wrap: wrap;
+    gap: 0 5px;
 }
 
-.option__label {
-    margin-right: 5px;
+.option__values {
+    display: flex;
+    line-height: 12px;
+    margin: 6px 0;
+    gap: 0 5px;
 }
 
 .option__value {
     cursor: pointer;
-    @extend %text-16;
-    text-decoration: underline;
+    border-bottom: 1px solid;
 }
 
 .option__value_active {
     font-weight: 700;
-    text-decoration: none;
+    border: none;
 }

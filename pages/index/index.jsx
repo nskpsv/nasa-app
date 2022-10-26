@@ -1,88 +1,28 @@
 import React, { useEffect, useState } from 'react';
-import ContentLayout from '../../layouts/contentLayout/content-layout';
+import ContentHeader from '../../components/content-header/content-header';
 import AsteroidList from '../../components/asteroid-list/asteroid-list';
-import Footer from '../../components/footer/footer';
 import styles from './index.module.scss';
-import { extractDataForState, filterAstList } from '../../utils/asteroids';
+import { filterAstList } from '../../utils/asteroids';
 
+export default ({ state }) => {
 
-export default ({ initState }) => {
-
-    const [state, setState] = useState(initState)
-    const [filtredList, setfiltredList] = useState(null);
-    const {filters, options, asteroidsList, order} = state;
-
-    const saveStateToStorage = (state) => sessionStorage.setItem('state', JSON.stringify(state));
-
-    const setFilters = (filter) => {
-        setState({
-            ...state, 
-            filters: {...filters, ...filter}
-        });
-        saveStateToStorage(state);
-    };
-
-    const setOptions = (option) => {
-        setState({
-            ...state, 
-            options: {...options, ...option}
-        });
-        saveStateToStorage(state);
-    };
-
-    const setAsteroidsData = (list) => {
-
-        const data = extractDataForState(list.near_earth_objects);
-        setState({
-            ...state, 
-            asteroidsList: state.asteroidsList.concat(data.arr),
-            asteroidsMap: {...state.asteroidsMap, ...data.map},
-            nextLink: list.links.next
-        });
-        saveStateToStorage(state);
-    };
+    const [asteroidsList, setAsteroidsList] = useState(null);
     
-    const updateAsteroidsMap = (asteroid) => {
-        setState({
-            ...state,
-            asteroidsMap: {...state.asteroidsMap, [asteroid.id]: asteroid}
-        });
-        saveStateToStorage(state);
-    }
-
-    const setOrder = (item) => {
-        const buff = {
-            ...state,
-            order: Object.assign({}, state.order, item)
+    useEffect(() => {
+        if (state.asteroidsMap) {
+            setAsteroidsList(filterAstList(state.asteroidsMap, state.filters));
         }
-        setState(buff);
-        localStorage.setItem('order', JSON.stringify(buff.order));
-        console.log(buff.order);
-    }
-
-    useEffect(() => {
-        if (!state) {JSON.parse(sessionStorage.getItem('state'))};
-    }, []);
-    
-    useEffect(() => {
-        setfiltredList(filterAstList(asteroidsList, filters));
-    }, [filters, asteroidsList]);
+    }, [state.filters, state.asteroidsMap]);
 
     return (
         <>
             <main className={styles.main_content}>
-                <ContentLayout filterProps={[filters, setFilters]} optionProps={[options, setOptions]}>
-                    <AsteroidList 
-                    asteroidsList={filtredList}
-                    asteroidsMap={state.asteroidsMap}
-                    setList={setAsteroidsData} 
-                    options={options}
-                    next={state.nextLink}
-                    onAddToOrder={setOrder}
-                    updateMap={updateAsteroidsMap} />
-                </ContentLayout>
+                <ContentHeader filters={state.filters} options={state.options} />
+                    <AsteroidList
+                        asteroidsList={asteroidsList}
+                        options={state.options}
+                        next={state.nextLink} />
             </main>
-            <Footer />
         </>
     )
 }

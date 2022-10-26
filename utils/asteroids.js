@@ -1,31 +1,31 @@
+import { convertDate } from './common';
+
 export const extractDataForState = (list) => {
     
     const map = {};
-    const arr = [];
 
     Object
         .keys(list)
-        .map(key => {
-            list[key]
-                .map(async (asteroid) => {
-                    map[asteroid.id] = prepareDataForListItem(asteroid)
-                    arr.push(map[asteroid.id])
+        .forEach(key => {
+            list[key].forEach((asteroid) => {
+                    map[asteroid.id] = convertAsteroidInfo(asteroid)
                 })
         });
 
-    return { map, arr };
+    return map;
 };
 
-const prepareDataForListItem = (ast) => {
+const convertAsteroidInfo = (ast) => {
     const result = {};
 
     result.isDanger = ast.is_potentially_hazardous_asteroid;
     result.approachDate = convertDate(ast.close_approach_data[0].close_approach_date);
     result.name = ast.name.match(/(?<=\().+?(?=\))/)[0];
     result.dia = (Math.round(ast.estimated_diameter.meters.estimated_diameter_max + ast.estimated_diameter.meters.estimated_diameter_min) / 2);
-    result.approachDistance = getApproachDistance(ast.close_approach_data[0]),
+    result.approachDistance = getApproachDistance(ast.close_approach_data[0]);
     result.id = ast.id;
     result.selfLink = ast.links.self;
+    result.isOrdered = false;
     
     return result;
 };
@@ -54,29 +54,8 @@ const getApproachDistance = (dataObj) => {
     }
 };
 
-const convertDate = (date) => {
-
-    const [y, m, d] = date.split('-');
-    const month = {
-        '01': 'января',
-        '02': 'февраля',
-        '03': 'марта',
-        '04': 'апреля',
-        '05': 'мая',
-        '06': 'июня',
-        '07': 'июля',
-        '08': 'августа',
-        '09': 'сентября',
-        '10': 'октября',
-        '11': 'ноября',
-        '12': 'декабря'
-    };
-
-    return `${d} ${month[m]} ${y}`
-};
-
 export const filterAstList = (list, filters) => {
-    let result = [...list];
+    let result = Object.keys(list).map(key => list[key]);
 
     for (let key in filters) {
         switch (typeof (filters[key])) {
@@ -93,7 +72,7 @@ export const filterAstList = (list, filters) => {
 const actions = {
     bool: (filter, fValue, list) => {
         if (fValue) {
-            return list.filter((ast) => ast[filter] === fValue)
+            return list.filter(ast => ast[filter] === fValue)
         } else {
             return list
         }
