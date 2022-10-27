@@ -35,20 +35,18 @@ export default ({ asteroidsList, options, next }) => {
     }
 
     return (
-        <div className={styles.list}>
             <InfiniteScroll
                 style={{
-                    overflow: 'visible',
-                    margin: '0'
+                    
                 }}
                 dataLength={asteroidsList.length}
                 next={getMore}
                 hasMore={hasMore}
                 loader={<h1 style={
                     {
-                        bottom: '50px',
-                        right: '60px',
-                        position: 'absolute'
+                        display: 'flex',
+                        alignItems: 'end',
+                        justifyContent: 'flex-start',
                     }}>
                     Loading...</h1>}
                 endMessage={<h3>End</h3>}
@@ -65,6 +63,5 @@ export default ({ asteroidsList, options, next }) => {
                     })
                 }
             </InfiniteScroll>
-        </div>
     )
 }

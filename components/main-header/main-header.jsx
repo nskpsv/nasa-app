@@ -14,7 +14,7 @@ export default ({ bgUrl }) => {
 
     return (
         <>
-            <div className={styles.header_pad}></div>
+            <div className={styles.header_pad}> </div>
             <header className={styles.header}>
                 <section className={styles.content}>
                     <h1 className={styles.content__title}>Armaggedon v2</h1>

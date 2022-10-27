@@ -2,7 +2,6 @@
 
 .option {
     display: flex;
-    align-items: center;
     flex-wrap: wrap;
     gap: 0 5px;
 }
@@ -22,4 +21,10 @@
 .option__value_active {
     font-weight: 700;
     border: none;
+}
+
+@media only screen and (max-width: 500px) {
+    .option {
+        flex-direction: column;
+    }
 }

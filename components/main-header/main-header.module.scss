@@ -9,6 +9,7 @@
 .header_pad {
    height: $header-height-s;
    width: 100%;
+   flex-shrink: 0;
 }
 
 .header { 
@@ -50,6 +51,12 @@
    line-height: 20px;
    margin-top: 8px;
    margin-left: 3px;
+}
+
+@media only screen and (min-width: 1600px) {
+   .header {
+      width: 1600px;
+   }
 }
 
 @media only screen and (max-width: 790px) {

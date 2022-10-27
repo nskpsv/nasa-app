@@ -6,8 +6,6 @@
   --bg-video: none;
 }
 
-
-
 body, h1, h2, h3, h4, p {
   padding: 0;
   margin: 0;
@@ -20,10 +18,8 @@ body, h1, h2, h3, h4, p {
 
 body {
   position: relative;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  max-width: 1000px;
   min-width: 320px;
+  max-width: 1600px;
   margin: 0 auto;
 }
 

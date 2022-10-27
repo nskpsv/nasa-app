@@ -4,16 +4,15 @@ import ApproachOption from '../option-items/approach-distance/approach-distance'
 import styles from './content-header.module.scss';
 import { updateFilters, updateOptions } from "../../state/state";
 
-export default ({ filters, options }) => {
+const ContentHeader = ({ filters, options }) => {
     
     const onFilterClick = (filter) => {
-
         updateFilters({...filters, ...filter})
     };
 
     const onOptionClick = (option) => {
         updateOptions({...options, ...option})
-    }
+    };
 
     return (
         <>
@@ -28,4 +27,6 @@ export default ({ filters, options }) => {
         </header>
         </>
     )
-}
+};
+
+export default ContentHeader;

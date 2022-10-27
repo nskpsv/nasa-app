@@ -1,3 +1,6 @@
+@import '../../styles/variables.scss';
+
 .main_content {
-max-width: inherit;
+    display: flex;
+    flex-direction: column;
 }

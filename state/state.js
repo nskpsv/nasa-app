@@ -3,7 +3,7 @@ const state = {
     asteroidsMap: null,
     filters: { isDanger: false },
     options: { approachDistance: 'km' },
-    order: [],
+    order: null,
     destroyed: null,
 };
 
@@ -64,7 +64,7 @@ export const setOrder = (order) => {
 
 export const addToOrder = (id) => {
 
-    state.order.push(id);
+    state.order ? state.order.push(id) : state.order = [id];
     state.asteroidsMap[id].isOrdered = true;
 
     saveOrder();
@@ -74,6 +74,11 @@ export const addToOrder = (id) => {
 export const deleteFromOrder = (id) => {
 
     state.order.splice(state.order.indexOf(id), 1);
+
+    if (!state.order.length) {
+        state.order = null;
+    }
+
     if (state.asteroidsMap[id]) {
         state.asteroidsMap[id].isOrdered = false;
     }

@@ -2,6 +2,11 @@
 
 .footer {
     background-color: white;
+    height: 40px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 
 .footer__text {
@@ -11,7 +16,11 @@
 
 @media only screen and (max-width: 345px) {
 
+    .footer {
+        height: 60px;
+    }
+
     .footer__text {
-        margin: 13px 16px;
+        margin: 0 13px 16px;
     }
 }
