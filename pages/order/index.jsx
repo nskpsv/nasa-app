@@ -17,7 +17,7 @@ export default ({ state: { order, asteroidsMap, options } }) => {
         progress.current.style.width = '100%';
         brigade.current.style.display = 'block';
 
-        setTimeout(() => { clearOrder(); }, order.length * 1000);
+        setTimeout(() => { clearOrder(); }, order.length * 1100);
     };
 
     return (
@@ -28,8 +28,8 @@ export default ({ state: { order, asteroidsMap, options } }) => {
                     <div className={styles.scale}>
                         <div className={styles.scale__progress} style={{ transitionDuration: `${order.length}s` }} ref={progress}>
                             <div className={styles.bruce_brigade } ref={brigade}>
-                                <div className={styles.rocket} style={{ background: `url(${rocket.src}) left 3px top 1px / 95px no-repeat` }}></div>
-                                <div className={styles.bruce} style={{ background: `url(${bruce.src}) top 2px left -3px / 135% no-repeat` }}></div>
+                                <div className={styles.rocket} style={{ background: `url(${rocket.src}) center / contain no-repeat` }}></div>
+                                <div className={styles.bruce} style={{ background: `url(${bruce.src}) left 3px top 7px / contain no-repeat` }}></div>
                             </div>
                         </div>
                         {
