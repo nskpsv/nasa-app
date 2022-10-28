@@ -1,7 +1,7 @@
 import styles from './asteroid-list.module.scss';
 import AsteroidListItem from '../asteroid-list-item/asteroid-list-item';
 import InfiniteScroll from "react-infinite-scroll-component";
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { getAsteroidsData } from '../../services/asteroids';
 import { extractDataForState } from '../../utils/asteroids';
 import {
@@ -9,7 +9,6 @@ import {
     updateAsteroidData,
     addToOrder,
     updateNextLink,
-    deleteFromOrder
 } from '../../state/state';
 
 export default ({ asteroidsList, options, next }) => {
@@ -63,5 +62,5 @@ export default ({ asteroidsList, options, next }) => {
                     })
                 }
             </InfiniteScroll>
-    )
-}
+    );
+};

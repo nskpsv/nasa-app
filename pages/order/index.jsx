@@ -4,20 +4,18 @@ import asteroidImg from '../../resources/images/asteroid.svg';
 import { ending } from '../../utils/common';
 import { clearOrder } from '../../state/state';
 import { useRef } from 'react';
-import bruce from '../../resources/images/bruce.png';
-import rocket from '../../resources/images/roсket.png';
 
 export default ({ state: { order, asteroidsMap, options } }) => {
 
     const progress = useRef(null);
-    const brigade = useRef(null);
 
     const orderTheBruceWillisBrigade = () => {
 
-        progress.current.style.width = '100%';
-        brigade.current.style.display = 'block';
+        new Promise(resolve => {
+            progress.current.style.width = '100%';
 
-        setTimeout(() => { clearOrder(); }, order.length * 1100);
+            setTimeout(() => { resolve() }, order.length * 1100);
+        }).then(() => clearOrder());
     };
 
     return (
@@ -26,12 +24,7 @@ export default ({ state: { order, asteroidsMap, options } }) => {
                 {
                     order &&
                     <div className={styles.scale}>
-                        <div className={styles.scale__progress} style={{ transitionDuration: `${order.length}s` }} ref={progress}>
-                            <div className={styles.bruce_brigade } ref={brigade}>
-                                <div className={styles.rocket} style={{ background: `url(${rocket.src}) center / contain no-repeat` }}></div>
-                                <div className={styles.bruce} style={{ background: `url(${bruce.src}) left 3px top 7px / contain no-repeat` }}></div>
-                            </div>
-                        </div>
+                        <div className={styles.scale__progress} style={{ transitionDuration: `${order.length}s` }} ref={progress}></div>
                         {
                             order.map((_, i) => <img className={styles.scale__item} src={asteroidImg.src} key={i} />)
                         }

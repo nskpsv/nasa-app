@@ -2,8 +2,6 @@ export const disableScroll = () => {
     const scrollY = window.scrollY;
     document.body.style.position = 'fixed';
     document.body.style.top = `-${scrollY}px`;
-/*     document.body.style.left = '0';
-    document.body.style.right = '0'; */
 };
 
 export const enableScroll = () => {
