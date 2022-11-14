@@ -50,12 +50,11 @@ https://www.figma.com/file/WzShoPTXgKE2bWl7B4mQmK/Armaggedon-V2-(Copy)?node-id=0
 - документация/инструкция по сборке проекта (README);
 
 ## Для запуска проекта:
-
-```bash
-В строке терминала:
-
+В строке терминала набрать команды:
+```
+git clone https://github.com/nskpsv/nasa-app.git
+cd nasa-app
 npm i
-затем
 npm run dev
 ```
 В браузере открыть адрес http://localhost:3000
